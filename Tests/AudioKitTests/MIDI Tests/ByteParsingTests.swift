@@ -61,7 +61,7 @@ private extension UnsafePointer where Pointee == MIDIPacketList {
         guard let packet = iterator.next() else {
             return nil
         }
-        return packet.unsafeMIDIData().elements
+        return Array(packet.unsafeMIDIData())
     }
 }
 
