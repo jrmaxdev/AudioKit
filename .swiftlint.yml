@@ -1,0 +1,11 @@
+included:
+  - Sources/AudioKit/MIDI/Packets/MIDIPacketList+legacyUnsafeSequence.swift
+  - Sources/AudioKit/MIDI/Packets/MIDIBytePacketList.swift
+  - Sources/AudioKit/MIDI/Packets/LegacyByteCollection.swift
+  - Sources/AudioKit/MIDI/Packets/MIDIPacket+midiData.swift
+  - Sources/AudioKit/MIDI/MIDIData.swift
+  - Sources/AudioKit/MIDI/MIDIBytes.swift
+  - Sources/AudioKit/MIDI/ByteArray+midi.swift
+
+  - Tests/AudioKitTests/MIDI Tests/MIDIDataSequenceTests.swift
+  - Tests/AudioKitTests/MIDI Tests/ByteParsingTests.swift

@@ -78,7 +78,7 @@ public extension AudioUnit {
         var dataSize: UInt32 = 0
         var writable: DarwinBoolean = false
 
-        try AudioUnitGetPropertyInfo(self, propertyID, kAudioUnitScope_Global, 0, &dataSize, &writable).check()
+        try AudioUnitGetPropertyInfo(self, propertyID, kAudioUnitScope_Global, 0, &dataSize, &writable).assertEqual()
 
         return (dataSize: dataSize, writable: writable.boolValue)
     }
@@ -91,7 +91,7 @@ public extension AudioUnit {
             data.deallocate()
         }
 
-        try AudioUnitGetProperty(self, propertyID, kAudioUnitScope_Global, 0, data, &dataSize).check()
+        try AudioUnitGetProperty(self, propertyID, kAudioUnitScope_Global, 0, data, &dataSize).assertEqual()
 
         return data.pointee
     }
@@ -100,7 +100,7 @@ public extension AudioUnit {
     func setProperty<T>(propertyID: AudioUnitPropertyID, dataSize: UInt32, data: T) throws {
         var data = data
 
-        try AudioFileSetProperty(self, propertyID, dataSize, &data).check()
+        try AudioFileSetProperty(self, propertyID, dataSize, &data).assertEqual()
     }
 
     /// Add property listener
@@ -110,7 +110,7 @@ public extension AudioUnit {
     /// - Throws: Error if could not add property listener
     internal func addPropertyListener(listener: AudioUnitPropertyListener,
                                       toProperty propertyID: AudioUnitPropertyID) throws {
-        try AudioUnitAddPropertyListener(self, propertyID, listener.proc, listener.procInput).check()
+        try AudioUnitAddPropertyListener(self, propertyID, listener.proc, listener.procInput).assertEqual()
     }
 
     /// Remove property listener
@@ -120,7 +120,7 @@ public extension AudioUnit {
     /// - Throws: Error if could not remove property listener
     internal func removePropertyListener(listener: AudioUnitPropertyListener,
                                          fromProperty propertyID: AudioUnitPropertyID) throws {
-        try AudioUnitRemovePropertyListenerWithUserData(self, propertyID, listener.proc, listener.procInput).check()
+        try AudioUnitRemovePropertyListenerWithUserData(self, propertyID, listener.proc, listener.procInput).assertEqual()
     }
 }
 
